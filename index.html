@@ -55,13 +55,13 @@
             console.log('gl good to go...');
         }
 
-        const coordinates = [-0.7, 0.7, -0.5, 0.0, 0.7, 0.0];
+        const coordinates = [-0.7, 0.7, -0.7, 0.0, 0.7, 0.0];
         const pointsBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, pointsBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coordinates), gl.STATIC_DRAW);
 
-        const vsSource = document.querySelector("#vertex-data").text;
-        const fsSource = document.querySelector("#fragment-data").text;
+        const vsSource = document.querySelector("#vertex-source").text;
+        const fsSource = document.querySelector("#fragment-source").text;
 
         const vertexShader = gl.createShader(gl.VERTEX_SHADER);
         gl.shaderSource(vertexShader, vsSource);
@@ -76,8 +76,9 @@
         gl.attachShader(program, fragmentShader);
 
         gl.linkProgram(program);
+        gl.useProgram(program);
 
-        const pointsAttributeLocation = gl.getAttributeLocation(program, "vertex_points");
+        const pointsAttributeLocation = gl.getAttribLocation(program, "vertex_points");
 
         let size = 2;
         let type = gl.FLOAT;
@@ -95,7 +96,7 @@
         const first = 0;
         const count = 3;
         gl.drawArrays(mode, first, count);
-        
+
         
 
     </script>
