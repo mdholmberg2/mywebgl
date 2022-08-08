@@ -55,7 +55,7 @@
             console.log('gl good to go...');
         }
 
-        const coordinates = [-0.7, 0.7, -0.7, 0.0, 0.7, 0.0];
+        const coordinates = [-0.7, 0.7, 0.7, 0.7, -0.7, 0.0, 0.7, 0.0];
         const pointsBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, pointsBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coordinates), gl.STATIC_DRAW);
@@ -92,9 +92,9 @@
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
-        const mode = gl.TRIANGLES;
+        const mode = gl.TRIANGLE_STRIP;
         const first = 0;
-        const count = 3;
+        const count = 4;
         gl.drawArrays(mode, first, count);
 
         
