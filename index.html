@@ -6,6 +6,26 @@
     <title>MyWebGL</title>
 </head>
 <body>
-    <h1>MYWebGL</h1>
+    <h1>MyWebGL</h1>
+    <canvas id="myCanvas" width="300" height="150">
+        <p>Your browser doesn't support canvas.</p>
+    </canvas>
+    <script type="text/javascript">
+        const canvas = document.getElementById('myCanvas');
+        const gl = canvas.getContext('webgl');
+
+         console.log('starting...');
+         console.log("canvas...", canvas);
+
+        if (!gl) {
+            console.log('no gl...');
+        } else {
+            console.log('gl good to go...');
+        }
+
+        gl.clearColor(1,0,0,1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+    </script>
 </body>
 </html>
