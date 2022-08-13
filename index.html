@@ -14,91 +14,9 @@
     <script type = "text/javascript" src="index.js"></script>
 </head>
 <body>
-    <!-- <h1>My Web GL</h1> -->
-    
-
-    <canvas id="canvas" width="1216" height="1334"></canvas>
-
-    <script id = "vertex-data" type = "not-javascript"></script>
-    <script id = "fragment-data" type = "not-javascript"></script>
-
-    <script id = "vertex-source" type = "not-javascript">
-        attribute vec4 vertex_points;
-
-        void main() {
-            gl_Position = vertex_points;
-        }
-    </script>
-
-    <script id = "fragment-source" type = "not-javascript">
-        precision mediump float;
-
-        void main() {
-            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-        }
-    </script>
-
-
-
-    <script>
-        
-
-        const canvas = document.getElementById('canvas');
-        const gl = canvas.getContext('webgl');
-
-        console.log('starting...');
-        console.log("canvas...", canvas);
-
-        if (!gl) {
-            console.log('no gl...');
-        } else {
-            console.log('gl good to go...');
-        }
-
-        const coordinates = [-0.7, 0.7, 0.7, 0.7, -0.7, 0.0, 0.7, 0.0];
-        const pointsBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, pointsBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(coordinates), gl.STATIC_DRAW);
-
-        const vsSource = document.querySelector("#vertex-source").text;
-        const fsSource = document.querySelector("#fragment-source").text;
-
-        const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-        gl.shaderSource(vertexShader, vsSource);
-        gl.compileShader(vertexShader);
-
-        const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-        gl.shaderSource(fragmentShader, fsSource);
-        gl.compileShader(fragmentShader);
-
-        const program = gl.createProgram();
-        gl.attachShader(program, vertexShader);
-        gl.attachShader(program, fragmentShader);
-
-        gl.linkProgram(program);
-        gl.useProgram(program);
-
-        const pointsAttributeLocation = gl.getAttribLocation(program, "vertex_points");
-
-        let size = 2;
-        let type = gl.FLOAT;
-        let normalize = false;
-        let stride = 0;
-        let offset = 0;
-
-        gl.vertexAttribPointer(pointsAttributeLocation, size, type, normalize, stride, offset);
-        gl.enableVertexAttribArray(pointsAttributeLocation);
-
-        gl.clearColor(0, 0, 0, 0);
-        gl.clear(gl.COLOR_BUFFER_BIT);
-
-        const mode = gl.TRIANGLE_STRIP;
-        const first = 0;
-        const count = 4;
-        gl.drawArrays(mode, first, count);
-
-        
-
-    </script>
+    <h1>WebGL</h1>
+    <h2>WebGL Programming Guide</h2>
+    <a href="WebGLProgrammingGuide/DrawRectangle.html">Draw Rectangle (canvas version)</a>
+    <h2>AR and VR Using the WebXR API</h2>
 </body>
 </html>
