@@ -76,8 +76,6 @@ function initVertexBuffers(gl) {
 
     var n = verticies.length / 2; //number of vertices
 
-    console.log(Math.random());
-
 
     // create buffer object
     var vertexBuffer = gl.createBuffer();
