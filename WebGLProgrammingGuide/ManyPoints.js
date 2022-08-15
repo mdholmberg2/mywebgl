@@ -1,4 +1,4 @@
-// MultiPoint.js
+// ManyPoints.js
 
 // vertex shader program
 var VSHADER_SOURCE = 
@@ -12,7 +12,7 @@ var VSHADER_SOURCE =
 // fragment shader program
 var FSHADER_SOURCE =
     "void main() {\n" +
-    "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n" + // set the color
+    "  gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\n" + // set the color
     "}\n";
 
 
@@ -49,7 +49,7 @@ function main() {
     //gl.vertexAttrib1f(a_PointSize, pointSize);
 
     // specify the color for clearing the canvas
-    gl.clearColor(0.7, 0.7, 0.7, 1.0);  // gray
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);  // black
     
     // clear the canvas
     gl.clear(gl.COLOR_BUFFER_BIT);
@@ -61,11 +61,22 @@ function main() {
 
 
 function initVertexBuffers(gl) {
-    var verticies = new Float32Array([      // items of x,y
-        0.0, 0.5,   -0.5, -0.5,     0.5, -0.5
-    ])
+
+    var verticies = new Float32Array(1000);     // items of x,y
+    for ( i = 0; i < 1000; i++) {
+
+        let x = Math.random();
+        if (Math.random() > 0.5) {
+            x = x * -1;
+        }
+
+
+        verticies[i] = x;
+    }
 
     var n = verticies.length / 2; //number of vertices
+
+    console.log(Math.random());
 
 
     // create buffer object
@@ -83,7 +94,7 @@ function initVertexBuffers(gl) {
     var a_Position = gl.getAttribLocation(gl.program, "a_Position");
     var a_PointSize = gl.getAttribLocation(gl.program, "a_PointSize");
 
-    var pointSize = 10.0;
+    var pointSize = 1.0;
 
     gl.vertexAttrib1f(a_PointSize, pointSize);
 
