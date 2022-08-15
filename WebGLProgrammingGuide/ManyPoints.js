@@ -55,7 +55,7 @@ function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // draw 3 points
-    gl.drawArrays(gl.POINTS, 0, n)
+    gl.drawArrays(gl.LINES, 0, n)
 
 }
 
