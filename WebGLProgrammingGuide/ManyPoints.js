@@ -94,7 +94,7 @@ function initVertexBuffers(gl) {
     var a_Position = gl.getAttribLocation(gl.program, "a_Position");
     var a_PointSize = gl.getAttribLocation(gl.program, "a_PointSize");
 
-    var pointSize = 1.0;
+    var pointSize = 5.0;
 
     gl.vertexAttrib1f(a_PointSize, pointSize);
 
