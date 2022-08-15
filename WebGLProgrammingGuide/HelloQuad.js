@@ -1,4 +1,4 @@
-// HelloTriangle.js
+// HelloQuad.js
 
 // vertex shader program
 var VSHADER_SOURCE = 
@@ -45,14 +45,14 @@ function main() {
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     // draw 3 points
-    gl.drawArrays(gl.TRIANGLES, 0, n)
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, n)
 
 }
 
 
 function initVertexBuffers(gl) {
     var verticies = new Float32Array([      // items of x,y
-        0.0, 0.5,   -0.5, -0.5,     0.5, -0.5
+        -0.5, 0.5,   -0.5, -0.5,     0.5, 0.5,  0.5, -0.5
     ])
 
     var n = verticies.length / 2; //number of vertices

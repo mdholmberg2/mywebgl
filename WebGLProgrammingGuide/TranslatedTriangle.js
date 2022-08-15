@@ -1,11 +1,12 @@
-// HelloTriangle.js
+// TranslatedTriangle.js
 
 // vertex shader program
 var VSHADER_SOURCE = 
     "attribute vec4 a_Position;\n" +
+    "uniform vec4 u_Translation;\n" +
     
     "void main() {\n" +
-    "  gl_Position = a_Position;\n" +       // coordinates
+    "  gl_Position = a_Position + u_Translation;\n" +       // coordinates
     "}\n";
 
 // fragment shader program
@@ -13,6 +14,8 @@ var FSHADER_SOURCE =
     "void main() {\n" +
     "  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n" + // set the color
     "}\n";
+
+var Tx = 0.5, Ty = 0.5, Tz = 0.0;
 
 
 function main() {
@@ -37,6 +40,11 @@ function main() {
         console.log("failed to init buffers");
         return;
     }
+
+    // pass the translation distance to the vertex shader
+    var u_Translation = gl.getUniformLocation(gl.program, "u_Translation");
+
+    gl.uniform4f(u_Translation, Tx, Ty, Tz, 0.0);
 
     // specify the color for clearing the canvas
     gl.clearColor(0.7, 0.7, 0.7, 1.0);  // gray
